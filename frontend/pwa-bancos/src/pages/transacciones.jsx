@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -50,8 +50,6 @@ const Cuentas = () => {
           <li key={account.id}>
             <strong>Cuenta:</strong> {account.name} <br />
             <strong>Saldo:</strong> {account.balance.current}
-            <Link to={`/cuenta/${account.name}`}>
-            </Link>
           </li>
         ))}
       </ul>
