@@ -38,7 +38,7 @@ const BankList = () => {
   if (loading) return <p>Cargando bancos...</p>;
   if (error) return <p>{error}</p>;
 
-  // Filtrar los bancos por los usados
+  // Filtrar por los bancos que se quieren mostrar
   const filteredBanks = banks.filter((bank) =>
     [
       "erebor_br_retail",
@@ -51,12 +51,12 @@ const BankList = () => {
   );
 
   return (
-    <div>
-      <h1>Lista de Bancos</h1>
-      <ul>
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="text-6xl text-wrap mb-4" >Lista de Bancos</h1>
+      <ul className="grid grid-cols-3 gap-3 justify-center items-center">
         {filteredBanks.map((bank) => (
           
-          <li key={bank.id}>
+          <li key={bank.id} className="flex m-3 rounded-md border-2 border-black hover:bg-slate-400">
             <Link to={`/bank/${bank.name}`}>
             <div>
               <strong>{bank.display_name}</strong> - País: {bank.country_code}

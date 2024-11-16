@@ -1,19 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login  from './components/login.jsx';
-import Dashboard from './pages/Dashboard.jsx';
 import Home from './pages/home.jsx';
 import Cuentas from './pages/cuentas.jsx';
+import Transacciones from './pages/transacciones.jsx';
 
 function App() {
   return (
-    <Router>
+    <div className="bg-slate-300 min-h-screen flex flex-col justify-center items-center p-5" > 
+    <Router >
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/bank/:name" element={<Cuentas />} />
+        <Route path="/cuenta/:id/:link" element={<Transacciones />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
+    </div>
   );
 }
 
