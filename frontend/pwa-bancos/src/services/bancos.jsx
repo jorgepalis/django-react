@@ -23,7 +23,7 @@ const BankList = () => {
           options
         );
         const data = await response.json();
-        setBanks(data.results || []); // Si no hay resultados, se asigna un arreglo vacío
+        setBanks(data.results || []);
       } catch (err) {
         setError("Error al cargar los bancos");
         console.error(err);
@@ -35,10 +35,9 @@ const BankList = () => {
     fetchBanks();
   }, []);
 
-  if (loading) return <p>Cargando bancos...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className="text-center">Cargando bancos...</p>;
+  if (error) return <p className="text-center text-red-500">{error}</p>;
 
-  // Filtrar por los bancos que se quieren mostrar
   const filteredBanks = banks.filter((bank) =>
     [
       "erebor_br_retail",
@@ -51,26 +50,28 @@ const BankList = () => {
   );
 
   return (
-    <div className="flex flex-col items-center justify-center mt-8">
-      <h1 className="text-6xl text-wrap mb-4" >Lista de Bancos</h1>
-      <ul className="grid grid-cols-3 gap-3 justify-center items-center">
+    <div className="flex flex-col items-center justify-center px-4 mt-14">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 text-center">
+        Lista de Bancos
+      </h1>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredBanks.map((bank) => (
-          
-          <li key={bank.id} className="flex m-3 rounded-md border-2 border-black hover:bg-slate-400">
-            <Link to={`/bank/${bank.name}`}>
-            <div>
-              <strong>{bank.display_name}</strong> - País: {bank.country_code}
-            </div>
-            {bank.logo && (
-              <img
-                src={bank.logo}
-                alt={`${bank.display_name} logo`}
-                style={{ width: "300px", height: "auto", margin: "10px 0" }}
-              />
-            )}
+          <li
+            key={bank.id}
+            className="flex flex-col items-center bg-white rounded-lg shadow-lg border hover:bg-slate-100 transition-all p-4"
+          >
+            <Link to={`/bank/${bank.name}`} className="w-full text-center">
+              <div className="text-lg font-bold mb-2">{bank.display_name}</div>
+              <div className="text-sm text-gray-500">País: {bank.country_code}</div>
+              {bank.logo && (
+                <img
+                  src={bank.logo}
+                  alt={`${bank.display_name} logo`}
+                  className="w-full h-auto max-h-40 object-contain mt-4"
+                />
+              )}
             </Link>
           </li>
-          
         ))}
       </ul>
     </div>

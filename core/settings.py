@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',  # Para APIs
     'rest_framework.authtoken',  # Para tokens de autenticación
     'corsheaders',  # Para permitir peticiones desde el frontend
+    "user",  # Para el modelo de usuario personalizado
 
 ]
 
@@ -58,9 +59,11 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:5173",
-    "http://127.0.0.1:5173",  # Tu frontend
-    # Agrega más URLs si es necesario
+    "http://127.0.0.1:5173",
+    "https://gt68j9c9-5173.use.devtunnels.ms",
 ]
+
+AUTH_USER_MODEL = "user.CustomUser"
 
 ROOT_URLCONF = 'core.urls'
 
