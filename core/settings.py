@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-mvz1q7v9e92kuw09#54c+dekbj)+z+(vc#2)b1bc6owe)$_77&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -61,6 +61,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "https://gt68j9c9-5173.use.devtunnels.ms",
+    "https://bank-prueba-frontend.vercel.app",
 ]
 
 AUTH_USER_MODEL = "user.CustomUser"
