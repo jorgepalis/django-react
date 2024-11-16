@@ -51,7 +51,7 @@ const BankList = () => {
   );
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mt-8">
       <h1 className="text-6xl text-wrap mb-4" >Lista de Bancos</h1>
       <ul className="grid grid-cols-3 gap-3 justify-center items-center">
         {filteredBanks.map((bank) => (

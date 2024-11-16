@@ -70,20 +70,19 @@ const Transacciones = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-        <a href="/">Bancos</a>
-      <div >
-        <h3>KPI: ${kpi} </h3>
-        <p><strong>Ingresos:</strong> {ingresos.toLocaleString()} </p>
-        <p><strong>Egresos:</strong> {egresos.toLocaleString()} </p>
+    <div className="mt-8" >
+      <div className="flex flex-col gap-1 " >
+        <h3 className="text-wrap text-3xl" >KPI: ${kpi} {transaccionesActuales[0].currency} </h3>
+        <p><strong>Ingresos:</strong> {ingresos.toLocaleString()} {transaccionesActuales[0].currency} </p>
+        <p><strong>Egresos:</strong> {egresos.toLocaleString()} {transaccionesActuales[0].currency} </p>
       </div>
 
       {/* Transacciones */}
-      <h2>Transacciones</h2>
-      <ul className="flex flex-col gap-2">
+      <h2 className="m-auto text-3xl">Transacciones</h2>
+      <ul className="grid grid-cols-2 gap-4">
         {transaccionesActuales.map((t) => (
-          <li key={t.id} className="rounded border-2 border-black">
-            <strong>Descripción:</strong> {t.description} <br />
+          <li key={t.id} className="rounded border-2 border-black p-2">
+            <strong>Descripción:</strong> {t.description || "Sin descripción"}  <br />
             <strong>Monto:</strong> {t.amount} {t.currency} <br />
             <strong>Tipo:</strong> {t.type} <br />
             <strong>Estado:</strong> {t.status} <br />
@@ -98,14 +97,14 @@ const Transacciones = () => {
       </ul>
 
       {/* Navegación de paginación */}
-      <div>
-        <button onClick={() => cambiarPagina(paginaActual - 1)} disabled={paginaActual === 1}>
+      <div className="flex flex-row gap-2 m-2">
+        <button className="rounded p-3 bg-slate-500" onClick={() => cambiarPagina(paginaActual - 1)} disabled={paginaActual === 1}>
           Anterior
         </button>
-        <span>
+        <span className="p-2">
           Página {paginaActual} de {totalPaginas}
         </span>
-        <button onClick={() => cambiarPagina(paginaActual + 1)} disabled={paginaActual === totalPaginas}>
+        <button className="rounded p-3 bg-slate-500" onClick={() => cambiarPagina(paginaActual + 1)} disabled={paginaActual === totalPaginas}>
           Siguiente
         </button>
       </div>

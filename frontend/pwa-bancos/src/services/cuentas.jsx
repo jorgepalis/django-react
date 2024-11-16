@@ -43,9 +43,9 @@ const Cuentas = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
+    <div className="mt-8">
       <h2 className="text-6xl text-wrap mb-4" >Cuentas asociadas</h2>
-      <ul className="flex flex-col gap-3">
+      <ul className="grid grid-cols-2 gap-3">
         {accounts.map((account) => (
           <li key={account.id} className="flex flex-col rounded border-2 border-black gap-2 p-2">
             <h2><strong>Cuenta:</strong> {account.name} <br /></h2>
